@@ -1,0 +1,21 @@
+[package]
+name = "traffic_data"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+charming = { version = "0.4.0", features = ["html"] }
+reqwest = { version = "0.12.9", features = ["json"] }
+serde = { version = "1.0.215", features = ["derive"] }
+serde_json = "1.0.132"
+tokio = { version = "1.41.1", features = ["full"] }
+
+[lints.rust]
+missing_debug_implementations = "warn"
+unsafe_code = "forbid"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+alloc_instead_of_core = "warn"
+std_instead_of_core = "warn"
