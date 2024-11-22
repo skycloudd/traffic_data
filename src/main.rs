@@ -83,7 +83,7 @@ fn create_chart(data: &[DataRow]) -> Chart {
             .x_axis(
                 Axis::new()
                     .type_(AxisType::Category)
-                    .name("Year")
+                    .name("Jaar")
                     .data(years.clone())
                     .grid_index(i),
             )
