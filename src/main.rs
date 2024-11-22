@@ -1,5 +1,8 @@
 use charming::{
-    component::{Axis, Grid, Legend, Title},
+    component::{
+        Axis, Feature, Grid, Legend, MagicType, MagicTypeType, SaveAsImage, SaveAsImageType, Title,
+        Toolbox,
+    },
     element::AxisType,
     series::Line,
     Chart, HtmlRenderer,
@@ -63,7 +66,16 @@ fn create_chart(data: &[DataRow]) -> Chart {
                 .bottom("50%"),
         )
         .grid(Grid::new().left("5%").right("65%").top("60%").bottom("5%"))
-        .grid(Grid::new().left("45%").right("25%").top("60%").bottom("5%"));
+        .grid(Grid::new().left("45%").right("25%").top("60%").bottom("5%"))
+        .toolbox(
+            Toolbox::new().show(true).left("30%").feature(
+                Feature::new()
+                    .magic_type(
+                        MagicType::new().type_(vec![MagicTypeType::Line, MagicTypeType::Bar]),
+                    )
+                    .save_as_image(SaveAsImage::new().type_(SaveAsImageType::Png)),
+            ),
+        );
 
     for i in 0..4 {
         chart = chart
