@@ -3,7 +3,7 @@ use charming::{
         Axis, Feature, Grid, Legend, MagicType, MagicTypeType, SaveAsImage, SaveAsImageType, Title,
         Toolbox,
     },
-    element::AxisType,
+    element::{AxisType, Tooltip},
     series::Line,
     Chart, HtmlRenderer,
 };
@@ -75,7 +75,8 @@ fn create_chart(data: &[DataRow]) -> Chart {
                     )
                     .save_as_image(SaveAsImage::new().type_(SaveAsImageType::Png)),
             ),
-        );
+        )
+        .tooltip(Tooltip::new());
 
     for i in 0..4 {
         chart = chart
@@ -86,7 +87,12 @@ fn create_chart(data: &[DataRow]) -> Chart {
                     .data(years.clone())
                     .grid_index(i),
             )
-            .y_axis(Axis::new().type_(AxisType::Value).grid_index(i));
+            .y_axis(
+                Axis::new()
+                    .type_(AxisType::Value)
+                    .name("Percentage")
+                    .grid_index(i),
+            );
     }
 
     chart = add_to_chart(
