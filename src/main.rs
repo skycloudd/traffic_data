@@ -231,23 +231,15 @@ async fn get_data_rows(url: &str) -> Vec<DataRow> {
         .await
         .unwrap();
 
-    eprintln!("getting: TypedDataSet");
-
     let typed_dataset: TypedDataset = get_by_url_key(&urls, "TypedDataSet").await;
-
-    eprintln!("getting: Geslacht");
 
     let geslacht: Simple = get_by_url_key(&urls, "Geslacht").await;
 
-    eprintln!("getting: Persoonskenmerken");
-
     let persoonskenmerken: Simple = get_by_url_key(&urls, "Persoonskenmerken").await;
-
-    eprintln!("getting: Perioden");
 
     let perioden: Simple = get_by_url_key(&urls, "Perioden").await;
 
-    eprintln!("mapping data");
+    eprintln!("mapping data from {} rows", typed_dataset.data.len());
 
     typed_dataset
         .data
@@ -279,6 +271,8 @@ async fn get_data_rows(url: &str) -> Vec<DataRow> {
 }
 
 async fn get_by_url_key<T: serde::de::DeserializeOwned>(urls: &Urls, key: &str) -> T {
+    eprintln!("getting: {key}");
+
     reqwest::get(&urls.data.iter().find(|v| v.name == key).unwrap().url)
         .await
         .unwrap()
