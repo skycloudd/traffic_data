@@ -1,9 +1,9 @@
 use charming::{
     component::{
-        Axis, Feature, Grid, Legend, MagicType, MagicTypeType, SaveAsImage, SaveAsImageType, Title,
-        Toolbox,
+        Axis, Feature, Grid, GridTooltip, Legend, MagicType, MagicTypeType, SaveAsImage,
+        SaveAsImageType, Title, Toolbox,
     },
-    element::{AxisType, Tooltip},
+    element::{AxisType, Tooltip, Trigger},
     series::Line,
     Chart, HtmlRenderer,
 };
@@ -57,16 +57,38 @@ fn create_chart(data: &[DataRow]) -> Chart {
     let mut chart = Chart::new()
         .title(Title::new().text(title_text).subtext(title_subtext))
         .legend(Legend::new().left("80%").right("0%"))
-        .grid(Grid::new().left("5%").right("65%").top("15%").bottom("50%"))
+        .grid(
+            Grid::new()
+                .left("5%")
+                .right("65%")
+                .top("15%")
+                .bottom("50%")
+                .tooltip(GridTooltip::new().show(true).trigger(Trigger::Axis)),
+        )
         .grid(
             Grid::new()
                 .left("45%")
                 .right("25%")
                 .top("15%")
-                .bottom("50%"),
+                .bottom("50%")
+                .tooltip(GridTooltip::new().show(true).trigger(Trigger::Axis)),
         )
-        .grid(Grid::new().left("5%").right("65%").top("60%").bottom("5%"))
-        .grid(Grid::new().left("45%").right("25%").top("60%").bottom("5%"))
+        .grid(
+            Grid::new()
+                .left("5%")
+                .right("65%")
+                .top("60%")
+                .bottom("5%")
+                .tooltip(GridTooltip::new().show(true).trigger(Trigger::Axis)),
+        )
+        .grid(
+            Grid::new()
+                .left("45%")
+                .right("25%")
+                .top("60%")
+                .bottom("5%")
+                .tooltip(GridTooltip::new().show(true).trigger(Trigger::Axis)),
+        )
         .toolbox(
             Toolbox::new().show(true).left("30%").feature(
                 Feature::new()
@@ -173,7 +195,11 @@ fn filtered_line(
                         .filter_map(|row| row.gebruik_openbaar_vervoer)
                         .collect::<Vec<_>>();
 
-                    filtered.iter().sum::<f64>() / filtered.len() as f64
+                    let n_decimals = 2;
+                    let rounding_factor = 10_f64.powi(n_decimals);
+
+                    (filtered.iter().sum::<f64>() / filtered.len() as f64 * rounding_factor).round()
+                        / rounding_factor
                 },
             )
             .collect(),
