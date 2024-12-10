@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;Title&gt;</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts-gl@2.0.9/dist/echarts-gl.min.js"></script>
+    <style> .container { display: flex; justify-content: center; align-items: center; } .item { margin: auto; } </style>
+  </head>
+  <body>
+      <div class="container">
+        <div class="item" id="chart" style="width: 1100px; height: 680px"></div>
+      </div>
+      
+      <script type="text/javascript">
+          
+          var chart = echarts.init(document.getElementById('chart'), null, { renderer: 'canvas' });
+          var option = {
+  "title": [
+    {
+      "text": "Deelname openbaar vervoer",
+      "subtext": "Gebruik van het openbaar vervoer\ngeslacht, onderwijsniveau, migratieachtergrond, leeftijd"
+    }
+  ],
+  "tooltip": {},
+  "legend": {
+    "left": "80%",
+    "right": "0%"
+  },
+  "toolbox": {
+    "show": true,
+    "feature": {
+      "saveAsImage": {
+        "type": "png"
+      },
+      "magicType": {
+        "type": [
+          "line",
+          "bar"
+        ]
+      }
+    },
+    "left": "30%"
+  },
+  "grid": [
+    {
+      "left": "5%",
+      "top": "15%",
+      "right": "65%",
+      "bottom": "50%",
+      "tooltip": {
+        "show": true,
+        "trigger": "axis"
+      }
+    },
+    {
+      "left": "45%",
+      "top": "15%",
+      "right": "25%",
+      "bottom": "50%",
+      "tooltip": {
+        "show": true,
+        "trigger": "axis"
+      }
+    },
+    {
+      "left": "5%",
+      "top": "60%",
+      "right": "65%",
+      "bottom": "5%",
+      "tooltip": {
+        "show": true,
+        "trigger": "axis"
+      }
+    },
+    {
+      "left": "45%",
+      "top": "60%",
+      "right": "25%",
+      "bottom": "5%",
+      "tooltip": {
+        "show": true,
+        "trigger": "axis"
+      }
+    }
+  ],
+  "xAxis": [
+    {
+      "type": "category",
+      "gridIndex": 0.0,
+      "name": "Jaar",
+      "data": [
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023"
+      ]
+    },
+    {
+      "type": "category",
+      "gridIndex": 1.0,
+      "name": "Jaar",
+      "data": [
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023"
+      ]
+    },
+    {
+      "type": "category",
+      "gridIndex": 2.0,
+      "name": "Jaar",
+      "data": [
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023"
+      ]
+    },
+    {
+      "type": "category",
+      "gridIndex": 3.0,
+      "name": "Jaar",
+      "data": [
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+        "2020",
+        "2021",
+        "2022",
+        "2023"
+      ]
+    }
+  ],
+  "yAxis": [
+    {
+      "type": "value",
+      "gridIndex": 0.0,
+      "name": "Percentage"
+    },
+    {
+      "type": "value",
+      "gridIndex": 1.0,
+      "name": "Percentage"
+    },
+    {
+      "type": "value",
+      "gridIndex": 2.0,
+      "name": "Percentage"
+    },
+    {
+      "type": "value",
+      "gridIndex": 3.0,
+      "name": "Percentage"
+    }
+  ],
+  "series": [
+    {
+      "type": "line",
+      "name": "Geslacht: Mannen",
+      "xAxisIndex": 0.0,
+      "yAxisIndex": 0.0,
+      "data": [
+        7.58,
+        8.4,
+        8.07,
+        8.03,
+        7.82,
+        7.93,
+        7.94,
+        8.57,
+        10.11,
+        10.07,
+        4.94,
+        5.38,
+        7.29,
+        8.28
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Geslacht: Vrouwen",
+      "xAxisIndex": 0.0,
+      "yAxisIndex": 0.0,
+      "data": [
+        9.16,
+        9.16,
+        8.64,
+        8.93,
+        8.85,
+        9.3,
+        8.84,
+        9.04,
+        11.55,
+        11.64,
+        5.56,
+        6.19,
+        8.3,
+        9.17
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Actueel onderwijsniveau: laag",
+      "xAxisIndex": 1.0,
+      "yAxisIndex": 1.0,
+      "data": [
+        5.67,
+        5.73,
+        5.57,
+        6.03,
+        5.97,
+        5.77,
+        5.6,
+        5.2,
+        5.89,
+        5.46,
+        2.9,
+        3.22,
+        4.5,
+        4.8
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Actueel onderwijsniveau: middelbaar",
+      "xAxisIndex": 1.0,
+      "yAxisIndex": 1.0,
+      "data": [
+        8.23,
+        8.87,
+        8.1,
+        8.83,
+        8.2,
+        8.73,
+        7.8,
+        8.33,
+        9.54,
+        9.31,
+        4.32,
+        5.36,
+        6.82,
+        7.22
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Actueel onderwijsniveau: hoog",
+      "xAxisIndex": 1.0,
+      "yAxisIndex": 1.0,
+      "data": [
+        9.07,
+        9.77,
+        9.1,
+        9.13,
+        8.43,
+        8.7,
+        9.4,
+        9.67,
+        11.32,
+        11.84,
+        4.78,
+        4.66,
+        7.09,
+        8.78
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Migratieachtergrond: Nederland",
+      "xAxisIndex": 2.0,
+      "yAxisIndex": 2.0,
+      "data": [
+        5.53,
+        5.8,
+        5.63,
+        5.8,
+        5.47,
+        5.73,
+        5.57,
+        5.9,
+        7.27,
+        7.27,
+        3.24,
+        3.38,
+        4.75,
+        null
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Migratieachtergrond: westers",
+      "xAxisIndex": 2.0,
+      "yAxisIndex": 2.0,
+      "data": [
+        8.3,
+        8.5,
+        7.2,
+        7.97,
+        8.8,
+        7.5,
+        7.87,
+        7.77,
+        11.29,
+        11.76,
+        5.21,
+        4.91,
+        8.54,
+        null
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Migratieachtergrond: niet-westers",
+      "xAxisIndex": 2.0,
+      "yAxisIndex": 2.0,
+      "data": [
+        14.5,
+        15.63,
+        13.5,
+        14.6,
+        13.3,
+        14.1,
+        13.8,
+        13.0,
+        16.51,
+        15.63,
+        7.58,
+        9.49,
+        12.19,
+        null
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Leeftijd: 12 tot 18 jaar",
+      "xAxisIndex": 3.0,
+      "yAxisIndex": 3.0,
+      "data": [
+        10.03,
+        9.8,
+        8.9,
+        9.83,
+        8.93,
+        9.6,
+        8.8,
+        9.8,
+        11.73,
+        10.8,
+        6.33,
+        6.33,
+        9.31,
+        9.43
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Leeftijd: 18 tot 25 jaar",
+      "xAxisIndex": 3.0,
+      "yAxisIndex": 3.0,
+      "data": [
+        23.23,
+        23.33,
+        23.53,
+        25.33,
+        23.33,
+        24.0,
+        23.4,
+        22.53,
+        23.87,
+        24.03,
+        11.93,
+        14.58,
+        18.43,
+        20.73
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Leeftijd: 25 tot 35 jaar",
+      "xAxisIndex": 3.0,
+      "yAxisIndex": 3.0,
+      "data": [
+        9.2,
+        10.17,
+        9.7,
+        10.57,
+        9.63,
+        9.93,
+        10.03,
+        11.57,
+        13.41,
+        13.43,
+        5.98,
+        6.52,
+        9.62,
+        10.69
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Leeftijd: 35 tot 50 jaar",
+      "xAxisIndex": 3.0,
+      "yAxisIndex": 3.0,
+      "data": [
+        5.0,
+        5.7,
+        5.1,
+        4.9,
+        5.17,
+        5.67,
+        5.57,
+        5.9,
+        7.14,
+        7.52,
+        3.23,
+        3.2,
+        4.83,
+        6.08
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Leeftijd: 50 tot 65 jaar",
+      "xAxisIndex": 3.0,
+      "yAxisIndex": 3.0,
+      "data": [
+        5.2,
+        5.47,
+        4.67,
+        4.7,
+        4.77,
+        4.8,
+        4.93,
+        4.77,
+        6.04,
+        6.03,
+        2.48,
+        2.44,
+        3.82,
+        4.36
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Leeftijd: 65 tot 75 jaar",
+      "xAxisIndex": 3.0,
+      "yAxisIndex": 3.0,
+      "data": [
+        3.23,
+        4.07,
+        3.6,
+        3.5,
+        3.3,
+        3.1,
+        3.27,
+        3.2,
+        4.24,
+        4.19,
+        1.92,
+        1.81,
+        2.26,
+        3.16
+      ]
+    },
+    {
+      "type": "line",
+      "name": "Leeftijd: 75 jaar of ouder",
+      "xAxisIndex": 3.0,
+      "yAxisIndex": 3.0,
+      "data": [
+        2.53,
+        2.6,
+        2.8,
+        3.23,
+        2.5,
+        2.97,
+        2.53,
+        2.57,
+        3.3,
+        3.0,
+        1.1,
+        1.38,
+        1.79,
+        2.23
+      ]
+    }
+  ]
+};
+          chart.setOption(option);
+      </script>
+  </body>
+</html>
